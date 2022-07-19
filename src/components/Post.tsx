@@ -1,14 +1,40 @@
 import { format, formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale'
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 import styles from './Post.module.css';
 
+export interface PostProps {
+  author: Author;
+  content: Content[];
+  publishedAt: Date
+}
 
-export function Post({ author, content, publishedAt }) {
-  const [comments, setComments] = useState([]);
+interface Content {
+  type: 'paragraph' | 'link';
+  content: string;
+}
+
+interface Author {
+  avatarUrl: string;
+  name: string;
+  role: string;
+}
+
+interface CommentType {
+  id: number;
+  content: string;
+  author: {
+    name: string;
+    avatarUrl: string;
+  };
+  publishedAt: Date;
+}
+
+export function Post({ author, content, publishedAt }: PostProps) {
+  const [comments, setComments] = useState<CommentType[]>([]);
   const [newCommentText, setNewCommentText] = useState('');
 
   const isNewCommentTextEmpty = newCommentText.trim() === '';
@@ -20,35 +46,37 @@ export function Post({ author, content, publishedAt }) {
     addSuffix: true
   })
 
-  function handleCreateNewComment(event) {
+  function handleCreateNewComment(event: FormEvent) {
     event.preventDefault();
 
     if (newCommentText.trim() === '') return;
 
-    setComments((prevState) => [...prevState, {
+    const newComment: CommentType = {
       id: Math.random(),
       content: newCommentText,
       author: {
         name: 'Unknown author',
-        avatarUrl: 'https://github.com/phazevedo28.png'
+        avatarUrl: 'https://github.com/phazevedo28.png',
       },
       publishedAt: new Date(),
-    }]);
+    }
+
+    setComments((prevState) => [...prevState, newComment]);
 
     setNewCommentText('');
   }
 
-  function handleNewCommentInvalid(event) {
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('Esse campo é obrigatório!')
   }
 
-  function handleNewCommentTextChange(event) {
+  function handleNewCommentTextChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('');
     setNewCommentText(event.target.value)
   }
 
-  function deleteComment(id) {
-    setComments(comments.filter((comment) => comment.id !== id))
+  function deleteComment(id: number) {
+    setComments(comments.filter((comment: CommentType) => comment.id !== id))
   }
 
   return (
@@ -66,7 +94,7 @@ export function Post({ author, content, publishedAt }) {
       </header>
 
       <div className={styles.content}>
-        {content.map(line => {
+        {content.map((line: Content) => {
           if (line.type === 'paragraph') {
             return <p key={line.content}>{line.content}</p>
           } else if (line.type === 'link') {
@@ -96,7 +124,7 @@ export function Post({ author, content, publishedAt }) {
       </form>
 
       <div className={styles.commentList}>
-        {comments.map(comment => (
+        {comments.map((comment: CommentType) => (
           <Comment
             key={comment.id}
             id={comment.id}

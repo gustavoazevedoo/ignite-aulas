@@ -7,7 +7,18 @@ import { Avatar } from './Avatar';
 
 import styles from './Comment.module.css';
 
-export function Comment({ id, author, content, claps, publishedAt, onDeleteComment }) {
+interface CommentProps {
+  id: number;
+  author: {
+    name: string;
+    avatarUrl: string;
+  },
+  content: string;
+  publishedAt: Date;
+  onDeleteComment: (id: number) => void;
+}
+
+export function Comment({ id, author, content, publishedAt, onDeleteComment }: CommentProps) {
   const [clapCount, setClapCount] = useState(0);
 
   const publishedDateFormatted = format(publishedAt, "dd 'de' LLLL 'às' HH:mm'h'", { locale: ptBR });
