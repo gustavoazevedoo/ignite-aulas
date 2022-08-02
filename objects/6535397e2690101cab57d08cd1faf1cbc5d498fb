@@ -2,3 +2,7 @@
 	object = 29e2d8750586da99a72b92f9dc5e450010a4a3cc
 	path = module1
 	type = expand module
+[map "6f5c7256-a5f9-3430-9a58-22da8ea71823"]
+	object = b28eef0fb4ad5fd5dea70c54daca3dcd5a1a4bf5
+	path = 02-ignite-timer
+	type = expand module

@@ -1,0 +1,24 @@
+[module "65f5df14-1f53-32fa-a493-18e2be3af1f6"]
+	conflict = request-pull
+	path = 01-fundamentos-reactjs
+	pull = merge subtree
+	pull = squash never
+	ref = if refs/heads/main sync refs/heads/main
+	url = agnostic://gh/520344092
+[module "24c6f9cb-0624-32c3-8173-bb8b743d2e3b"]
+	conflict = request-pull
+	path = 02-ignite-timer
+	pull = merge subtree
+	pull = squash never
+	ref = if refs/heads/main sync refs/heads/main
+	url = agnostic://gh/520344378
+[map "53688f42-599f-38f3-a76f-384f9507bb7c"]
+	object = 0fd7520829e1e3dd504e67fb1e16155ac713e275
+	path = 01-fundamentos-reactjs
+	stage = sync
+	type = extract module
+[map "58555754-fae6-3130-ac0a-af51b2cb8d27"]
+	object = 6535397e2690101cab57d08cd1faf1cbc5d498fb
+	path = 02-ignite-timer
+	stage = sync
+	type = extract module
