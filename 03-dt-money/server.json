@@ -15,6 +15,14 @@
       "category": "Periféricos",
       "price": 2000,
       "createdAt": "2022-09-02T21:29:49.768Z" 
+    },
+    {
+      "id": 3,
+      "description": "Cadeira",
+      "type": "outcome",
+      "category": "Periféricos",
+      "price": 1190,
+      "createdAt": "2022-09-02T23:23:23.768Z" 
     }
   ]
 }
