@@ -6,7 +6,7 @@
       "type": "income",
       "category": "Venda",
       "price": 14000,
-      "createdAt": "2022-09-02T21:26:49.303Z" 
+      "createdAt": "2022-09-02T21:26:49.303Z"
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "type": "outcome",
       "category": "Periféricos",
       "price": 2000,
-      "createdAt": "2022-09-02T21:29:49.768Z" 
+      "createdAt": "2022-09-02T21:29:49.768Z"
     },
     {
       "id": 3,
@@ -22,7 +22,15 @@
       "type": "outcome",
       "category": "Periféricos",
       "price": 1190,
-      "createdAt": "2022-09-02T23:23:23.768Z" 
+      "createdAt": "2022-09-02T23:23:23.768Z"
+    },
+    {
+      "description": "Pastel",
+      "price": 5,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-09-12T20:09:16.047Z",
+      "id": 4
     }
   ]
 }
